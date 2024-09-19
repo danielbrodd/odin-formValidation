@@ -2,9 +2,23 @@ const email = document.querySelector("#email")
 
 
 email.addEventListener('focusout', (e)=>{
-    console.log("focus out")
 
-    if (email.validity.typeMismatch) {
+    console.log(email.validity)
+
+    const validityState = email.validity
+
+    switch(true) {
+        case validityState.valueMissing:
+            email.setCustomValidity("You must enter something")
+            break;
+        case validityState.typeMismatch:
+            email.setCustomValidity("And it has to be an email. Didn't I say that?")
+            break;
+        default:
+            console.log("Valid")
+    }
+    console.log(email.validationMessage)
+    /* if (email.validity.typeMismatch) {
         email.setCustomValidity("and it has to be an email");
         
     }else if (email.validity.valueMissing){
@@ -15,5 +29,5 @@ email.addEventListener('focusout', (e)=>{
     } else {
         console.log("unknown")
     }
-    email.reportValidity()
+    email.reportValidity() */
 })
