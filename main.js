@@ -1,31 +1,35 @@
 const form =  document.querySelector("form");
-const email = document.querySelector("#email");
-const zip = document.querySelector("#zip")
 
 const inputs = document.querySelectorAll("input");
-
+const pwd = document.querySelector("#pwd");
+const confpwd = document.querySelector("#cnfPwd");
+const error = document.querySelector(".error");
 
 
 inputs.forEach(element => {
-    console.log(element)
-    console.log(element.labels[0].textContent)
-
-    element.addEventListener('focusout', () => (
-        msg = customValidator(element)
+    
+    element.addEventListener('focusout', () => {
+        let msg = customValidator(element)
         console.log(msg)
-        ));
+        error.innerHTML = msg
+        if (element.id = "cnfPwd") {
+            if (pwd != cnfPwd) {
+                msg = "Passwords do not match";
+            }
+        }
+    });
 });
 
 zip.addEventListener('focusout', (e)=>{
     msg = customValidator(zip);
-    console.log(msg)
+
 })
 
 email.addEventListener('focusout', (e)=>{
 
     msg = customValidator(email)
-    console.log(msg)
-    console.log(email.validity)
+
+
     const validityState = email.validity
 
     switch(true) {
@@ -38,7 +42,7 @@ email.addEventListener('focusout', (e)=>{
         default:
             console.log("Valid")
     }
-    console.log(email.validationMessage)
+
     /* if (email.validity.typeMismatch) {
         email.setCustomValidity("and it has to be an email");
         

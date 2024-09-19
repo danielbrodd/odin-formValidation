@@ -14,15 +14,16 @@
             <label for="email">Email</label>
             <input required type="email" name="email" id="email">
             <label for="country">Country</label>
-            <input type="text" name="country" id="country">
+            <input required type="text" name="country" id="country">
             <label  for="zip">ZIP</label>
-            <input minlength="4" max="5" type="text" name="zipCode" id="zip">
+            <input required minlength="4" max="5" type="text" name="zipCode" id="zip">
             <label for="pwd">Password</label>
-            <input type="password" name="password" id="pwd">
+            <input required type="password" name="password" id="pwd">
             <label for="cnfPwd">Confirm Password</label>
-            <input type="password" name="confirmPassowrd" id="cnfPwd">
+            <input required type="password" name="confirmPassowrd" id="cnfPwd">
             <button type="submit">Submit</button>
         </form>
+        <div class="error">Temp error message</div>
     </div>
 </body>
 </html>
