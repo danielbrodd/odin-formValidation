@@ -1,10 +1,31 @@
-const email = document.querySelector("#email")
+const form =  document.querySelector("form");
+const email = document.querySelector("#email");
+const zip = document.querySelector("#zip")
 
+const inputs = document.querySelectorAll("input");
+
+
+
+inputs.forEach(element => {
+    console.log(element)
+    console.log(element.labels[0].textContent)
+
+    element.addEventListener('focusout', () => (
+        msg = customValidator(element)
+        console.log(msg)
+        ));
+});
+
+zip.addEventListener('focusout', (e)=>{
+    msg = customValidator(zip);
+    console.log(msg)
+})
 
 email.addEventListener('focusout', (e)=>{
 
+    msg = customValidator(email)
+    console.log(msg)
     console.log(email.validity)
-
     const validityState = email.validity
 
     switch(true) {
@@ -31,3 +52,27 @@ email.addEventListener('focusout', (e)=>{
     }
     email.reportValidity() */
 })
+
+
+function customValidator(target) {
+    validityState = target.validity;
+    labelText = target.labels[0].textContent;
+    var errorMsg = ""
+    switch(true){
+        case validityState.typeMismatch:
+            errorMsg = `you must enter: ${labelText}`;
+            
+            break;
+        case validityState.valueMissing:
+            errorMsg = 'cannot be empty'
+            break;
+        case validityState.tooShort:
+            errorMsg = "too short";
+            break
+        default:
+            errorMsg = "";
+            break;
+    }
+
+    return errorMsg;
+}
