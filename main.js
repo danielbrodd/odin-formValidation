@@ -14,6 +14,17 @@ inputs.forEach(element => {
     });
 });
 
+form.addEventListener('submit', (event) =>{
+
+    inputs.forEach(element => {
+        if(!element.checkValidity()){
+            validationSwitch(element);
+            console.log('not valid for submission')
+            event.preventDefault();
+        }
+
+    })
+})
 
 function validationSwitch(element) {
     let name = element.name;
