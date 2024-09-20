@@ -24,3 +24,10 @@ form {
     display: grid;
     grid-template-columns: 1fr;
 }
+
+input:invalid {
+    background-color: red;
+}
+input:valid {
+    background-color: transparent;
+}
